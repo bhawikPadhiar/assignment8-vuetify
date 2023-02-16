@@ -4,6 +4,7 @@
     <v-app-bar elevation="" >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Session 8</v-toolbar-title>
+      
       <v-spacer></v-spacer>
       <v-btn elevation fab small><v-icon>mdi-heart</v-icon></v-btn>
       <v-btn elevation fab small><v-icon>mdi-magnify</v-icon></v-btn>
@@ -15,7 +16,8 @@
     <AddNewItems></AddNewItems> -->
     <v-navigation-drawer app v-model="drawer" temporary>  
       <v-list>
-        <v-list-group v-for="item in items" :key="item.title" v-model="item.active" :prepend-icon="item.icon"
+           <!-- list group 1 -->
+        <v-list-group v-for="item in allItems" :key="item.title" v-model="item.active" :prepend-icon="item.icon"
           active-color="primary">
           <template v-slot:activator>
             <v-list-item-content>
@@ -23,18 +25,36 @@
               <!-- <v-icon :icon="item.icon"></v-icon> -->
             </v-list-item-content>
           </template>
-          <v-list-item router :to='child.route' :key="child.title" v-for="child in item.items" :prepend-icon="child.icon" active-color="primary">
+          <v-list-item router :to='child.route' :key="child.title" v-for="child in allItems3"  :prepend-icon="child.icon" active-color="primary">
             <v-list-item-content>
-              
+
              <v-list-item-title  v-text="child.title"></v-list-item-title>
-            
             </v-list-item-content>
           </v-list-item>
         </v-list-group>
       </v-list> 
+        <!-- list group 2 -->
+        <v-list>
+        <v-list-group v-for="item in allItems2" :key="item.title" v-model="item.active" :prepend-icon="item.icon"
+          active-color="primary">
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+              <!-- <v-icon :icon="item.icon"></v-icon> -->
+            </v-list-item-content>
+          </template>
+          <v-list-item router :to='child.route' :key="child.title" v-for="child in allItems4" :prepend-icon="child.icon" active-color="primary">
+            <v-list-item-content>
+             <v-list-item-title  v-text="child.title"> </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+      </v-list>
+      
     </v-navigation-drawer >
     <v-main>
       <v-container class="d-flex justify-right align-right text-h5">
+       
       <RouterView></RouterView>
     </v-container>
      <!-- <v-container v-if="display1" default="false" class="d-flex justify-center align-center text-h5"
@@ -67,16 +87,26 @@
 //  import AllCategories from './components/AllCategories.vue';
 
 //import RouterView  from 'vue-router';
-
+import { mapGetters,mapActions } from 'vuex';
 
 
 //  import AllItems from './components/AllItems.vue';
 export default {
   name: 'App',
-  components:{
+   components:{},
     //RouterView,
-   
-},
+    computed:{ ...mapGetters(['allItems']),...mapGetters(['allItems2']),...mapGetters(['allItems3']),...mapGetters(['allItems4'])},
+
+    methods:{
+      ...mapActions(['fetchItems']),...mapActions(['fetchItems2']),...mapActions(['fetchItems3']),...mapActions(['fetchItems4'])
+    
+    },
+    created(){
+      this.fetchItems(),
+      this.fetchItems2(),
+      this.fetchItems3(),
+      this.fetchItems4()
+    },
   data: () => ({
     drawer: false,
     // display1:false,
@@ -94,13 +124,10 @@ export default {
     //   {title:'Add New Items'}
     // ]
     //
-  }),
-  computed: {
-    items() {
-      return this.$store.state.items
-    },
-  },
-  methods:{
+  })
+  
+
+  
   //   clicks(para){
      
   //    if(para==1){
@@ -119,7 +146,5 @@ export default {
   //   }
   // }
 
-    
-  }
-};
+  };
 </script>

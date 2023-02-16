@@ -25,16 +25,21 @@
     </thead>
     <tbody>
       <tr
-        v-for="item in table1"
-        :key="item.name"
-      ><v-spacer></v-spacer>
+        v-for="item in allTable1"
+        :key="item.name">
+        <v-spacer></v-spacer>
         <td>{{ item.id }}</td>
         <v-spacer></v-spacer>
         <td>{{ item.name }}</td>
         <v-spacer></v-spacer>
         <td>{{ item.description }}</td>
         <v-spacer></v-spacer>
-       <td><v-switch label="Switch"></v-switch></td>
+       <td>
+        <v-switch
+        v-model="item.model"
+    hide-details
+    inset
+></v-switch></td>
        <v-spacer></v-spacer>
        <td><v-btn>
           Delete
@@ -50,54 +55,25 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+
+import { mapGetters, mapActions } from 'vuex';
 
   export default {
+    computed:{
+      ...mapGetters(['allTable1'])
+    },
+    methods:{
+      ...mapActions(['fetchTable1']),
+     
+    },
+    created(){
+      this.fetchTable1()
+    },
+
     data () {
       return {
-        table1: [
-          // {
-          //   id: 1,
-          //   name: "kjadshjkadf",
-          //   description:"vbhjdfs",
-          //   status:false
-
-          // },
-          // {
-          //   id: 1,
-          //   name: "kjadshjkadf",
-          //   description:"vbhshdfs",
-          //   status:false
-          // },
-          // {
-          //   id: 1,
-          //   name: "kjadshjkadf",
-          //   description:"vbdfs",
-          //   status:false
-          // },
-          // {
-          //   id: 1,
-          //   name: "kjadshjkadf",
-          //   description:"vbdfs",
-          //   status:false
-          // },
-          // {
-          //   id: 1,
-          //   name: "kjadshjkadf",
-          //   description:"vbhjhdfs",
-          //   status:false
-          // },
-          // {
-          //   id: 1,
-          //   name: "kjadshjkadf",
-          //   description:"vbhjfs",
-          //   status:false
-          // }  
-        ],
+        table1:[ ],
       }
-    },
-    computed:{
-      ...mapGetters["fetchUsers"]                 
     }
   }
 </script>

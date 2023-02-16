@@ -1,24 +1,214 @@
 {
+  "items": [
+    {
+      "id": 1,
+      "title": "Item Category",
+      "icon": "mdi-widgets"
+    }
+  ],
+  "items2": [
+    {
+      "id": 2,
+      "title": "Items",
+      "icon": "mdi-folder"
+    }
+  ],
+  "items3": [
+    {
+      "title": "All category",
+      "route": "/AllCategories"
+    },
+    {
+      "title": "Add New Category",
+      "route": "/AddNewCategory"
+    }
+  ],
+  "items4": [
+    {
+      "title": "All Items",
+      "route": "/AllItems"
+    },
+    {
+      "title": "Add New Items",
+      "route": "/AddNewItems"
+    }
+  ],
   "table1": [
     {
       "id": 1,
-      "name": "kjadshjkadf",
-      "description":"vbhjdfs",
-      "status":false
-             
+      "name": "shyam",
+      "description": "vbhjdfs",
+      "model": true
     },
     {
-      "id": 1,
-      "name": "kjadshjkadf",
-      "description":"vbhshdfs",
-      "status":false
+      "id": 2,
+      "name": "ram",
+      "description": "vbhshdfs",
+      "model": false
     },
     {
-      "id": 1,
-      "name": "kjadshjkadf",
-      "description":"vbdfs",
-      "status":false
+      "id": 3,
+      "name": "ghanshyam",
+      "description": "vbdfs",
+      "model": false
+    },
+    {
+      "id": 4,
+      "name": "keyur",
+      "description": "vbdfs",
+      "model": true
+    },
+    {
+      "id": 5,
+      "name": "rahul",
+      "description": "vbhjhdfs",
+      "model": true
+    },
+    {
+      "id": 6,
+      "name": "soujanya",
+      "description": "vbhjfs",
+      "model": false
+    },
+    {
+      "id": "ram"
+    },
+    {
+      "name": "ram",
+      "id": 7
+    },
+    {
+      "name": "ram",
+      "id": 8
+    },
+    {
+      "table1": "ram",
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "name": "ram",
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "param": {
+        "name": "ram",
+        "description": "shyam",
+        "model": true
+      },
+      "id": 17
+    },
+    {
+      "name": "ram",
+      "id": 18
+    },
+    {
+      "name": "ram",
+      "id": 19
+    },
+    {
+      "name": "ram",
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "param": {
+        "name": "name",
+        "description": "desc",
+        "model": true
+      },
+      "id": 22
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "id": 26
+    },
+    {
+      "id": 27
+    },
+    {
+      "addData": {
+        "name": "ram",
+        "description": "shyam",
+        "model": true
+      },
+      "id": 28
+    },
+    {
+      "id": 29
+    },
+    {
+      "name": "ram",
+      "description": "shyam",
+      "model": true,
+      "id": 30
+    },
+    {
+      "name": "ram",
+      "description": "shyam",
+      "model": true,
+      "id": 31
+    },
+    {
+      "name": "ram",
+      "description": "shyam",
+      "model": true,
+      "money": "56",
+      "select": "Item 2",
+      "id": 32
     }
-  
+  ],
+  "table2": [
+    {
+      "id": 1,
+      "name": "pikachu",
+      "description": "dfs",
+      "price": 12,
+      "category": "bad",
+      "model": true
+    },
+    {
+      "id": 2,
+      "name": "squirtle",
+      "description": "vbhshd",
+      "price": 12,
+      "category": "bad",
+      "model": true
+    },
+    {
+      "id": 3,
+      "name": "charlizard",
+      "description": "hshdfs",
+      "price": 12,
+      "category": "bad",
+      "model": true
+    }
   ]
 }

@@ -1,12 +1,12 @@
 <template>
     <v-sheet width="300" class="mx-auto">
-        <v-form @submit.prevent>
-            <v-text-field v-model="Name" :rules="rules" label="Name"></v-text-field>
+        <v-form @submit="onSubmit">
+            <v-text-field v-model="name" :rules="rules" label="Name"></v-text-field>
             <v-text-field v-model="money" label="money"></v-text-field>
             <v-text-field v-model="description" label="Description"></v-text-field>
             <v-select v-model="select" :items="items" :rules="[v => !!v || 'Item is required']" label="Item"
                 required></v-select>
-            <v-switch v-model="status" hide-details inset :label="`Switch: ${status.toString()}`"></v-switch>
+            <v-switch v-model="model" hide-details inset ></v-switch>
             <v-btn type="submit" block class="mt-2">Submit</v-btn>
         </v-form>
 
@@ -16,8 +16,18 @@
 
 <script>
 export default {
+
+    methods:{
+        onSubmit(e){
+     e.preventDefault();
+      let addData={name:this.name,description:this.description,model:this.model,money:this.money,select:this.select}
+      this.$store.dispatch('addItems',addData)
+    },
+    },
+
     data: () => ({
-        status: true,
+        name:'',
+        model: false,
         description: '',
         money:"",
         select: null,

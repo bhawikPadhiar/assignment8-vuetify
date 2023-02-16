@@ -1,20 +1,36 @@
 <template>
   <v-sheet width="300" class="mx-auto">
-    <v-form @submit.prevent>
-      <v-text-field v-model="Name" :rules="rules" label="Name"></v-text-field>
+    <v-form @submit="onSubmit">
+      <v-text-field v-model="name" :rules="rules" label="Name"></v-text-field>
       <v-text-field v-model="description" label="Description"></v-text-field>
-      <v-switch v-model="status" hide-details inset :label="`Switch: ${status.toString()}`"></v-switch>
-      <v-btn type="submit" block class="mt-2">Submit</v-btn>
+      <v-switch v-model="model" hide-details inset ></v-switch>
+      <v-btn type="submit" value="Submit" block class="mt-2">Submit</v-btn>
     </v-form>
   </v-sheet>
 </template>
 
 <script>
+//import { mapActions } from 'vuex';
 export default {
+
+  methods:{
+    
+   // ...mapActions(['addCategories']),
+   
+
+    onSubmit(e){
+     e.preventDefault();
+      let addData={name:this.name,description:this.description,model:this.model}
+      this.$store.dispatch('addCategories',addData)
+    },
+
+} ,
   data: () => ({
-    status: true,
-    Name: '',
-    description: '',
+      name:'',
+      description:'',
+      model:'',
+    
+   
     rules: [
       value => {
         if (value) return true

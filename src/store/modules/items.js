@@ -55,16 +55,31 @@ const actions = {
         commit('addCategories',response.data);
        
     },
+    // Add Items
     async addItems({commit},param) {
         const response = await axios.post('http://localhost:3000/table2',param);
         commit('addItems',response.data);
         
     },
+    // Delete Items
     async deleteItems({commit},id){
         await axios.delete(`http://localhost:3000/table2/${id}`);
     commit('removeItem',id);
    
-}
+},
+// Delete Categories
+    async deleteCate({commit},id){
+        await axios.delete(`http://localhost:3000/table1/${id}`);
+    commit('removeCate',id);
+   
+},
+// Edit
+    async editItems({commit},edit){
+       const response = await axios.put(`http://localhost:3000/table2/`+edit.id);
+         commit('editItem',edit);
+        alert(response.data);
+        console.log(response.data)
+    }
    
     
 };
@@ -78,7 +93,15 @@ const mutations ={
     setTable2: (state, table2)=>(state.table2 = table2),
     addCategories:(state,table1)=>state.table1.unshift(table1),
     addItems:(state,table2)=>state.table2.unshift(table2),
-    removeItem:(state,id) => state.table2 = state.table2.filter(table2 => table2.id !==id)
+    removeItem:(state,id) => state.table2 = state.table2.filter(table2 => table2.id !==id),
+    removeCate:(state,id) => state.table1 = state.table1.filter(table1 => table1.id !==id),
+    editItem: (state,edit)=> {const index = state.table2.findIndex(table2 => table2.id === edit.id);
+    if(index !== -1){
+        state.table2.splice(index,1,edit);
+    }
+ },
+
+
 };
 
 export default {

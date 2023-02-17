@@ -1,4 +1,5 @@
 <template>
+  <v-main><EditModalItems v-if="dialog" :editItemsData="editData" :items="items" @close-modal="close($event)" @openModals="open($event)"></EditModalItems>
   <v-table density="comfortable" theme="dark">
     <thead>
       <tr>
@@ -53,35 +54,60 @@
             Delete
           </v-btn></td>
         <v-spacer></v-spacer>
-        <td><v-btn>
+        <td><v-btn  @click="openModal(item)">
             Edit
           </v-btn></td>
         <v-spacer></v-spacer>
       </tr>
     </tbody>
   </v-table>
+  <p>{{ editData }}</p>
+</v-main>
 </template>
 
 <script>
+
 import { mapActions, mapGetters } from 'vuex';
+import EditModalItems from './EditModalItems.vue';
 export default {
+  props:['items'],
+  components:{
+   
+    EditModalItems
+},
   computed: {
     ...mapGetters(['allTable2'])
   },
   methods: {
     ...mapActions(['fetchTable2']),
     deleteItems(id) {
-      console.warn(id);
+     
       this.$store.dispatch('deleteItems', id)
-    }
+    },
+    openModal(data){
+      //this.$emit('openMoadals',data),
+      this.editData=data,
+      this.dialog=true
+      
+    },
+    // open(data){
+    //   this.editData=data
+    //   console.log(this.editData)
+    // },
+      close(){
+          this.dialog=false
+      
+      },
+  
   },
   created() {
     this.fetchTable2()
   },
   data() {
     return {
-     
+    dialog:false,
       table2: [],
+    editData:[],
     }
   },
 }

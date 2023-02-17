@@ -41,7 +41,7 @@
     inset
 ></v-switch></td>
        <v-spacer></v-spacer>
-       <td><v-btn>
+       <td><v-btn @click="deleteCate(item.id)">
           Delete
        </v-btn></td>
        <v-spacer></v-spacer>
@@ -64,7 +64,8 @@ import { mapGetters, mapActions } from 'vuex';
     },
     methods:{
       ...mapActions(['fetchTable1']),
-     
+      deleteCate(id){
+     this.$store.dispatch('deleteCate',id)}
     },
     created(){
       this.fetchTable1()

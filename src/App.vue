@@ -56,6 +56,7 @@
       <v-container class="d-flex justify-right align-right text-h5">
        
       <RouterView></RouterView>
+    
     </v-container>
      <!-- <v-container v-if="display1" default="false" class="d-flex justify-center align-center text-h5"
           style="min-height: 300px;">
@@ -90,15 +91,17 @@
 import { mapGetters,mapActions } from 'vuex';
 
 
+
 //  import AllItems from './components/AllItems.vue';
 export default {
   name: 'App',
-   components:{},
+   
     //RouterView,
     computed:{ ...mapGetters(['allItems']),...mapGetters(['allItems2']),...mapGetters(['allItems3']),...mapGetters(['allItems4'])},
 
     methods:{
-      ...mapActions(['fetchItems']),...mapActions(['fetchItems2']),...mapActions(['fetchItems3']),...mapActions(['fetchItems4'])
+      ...mapActions(['fetchItems']),...mapActions(['fetchItems2']),...mapActions(['fetchItems3']),...mapActions(['fetchItems4']),
+      
     
     },
     created(){

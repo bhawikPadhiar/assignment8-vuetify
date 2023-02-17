@@ -12,16 +12,17 @@
 <script>
 //import { mapActions } from 'vuex';
 export default {
-
+props:['addItems'],
   methods:{
     
    // ...mapActions(['addCategories']),
    
 
-    onSubmit(e){
-     e.preventDefault();
+    onSubmit(event){
+    //  e.preventDefault();
       let addData={name:this.name,description:this.description,model:this.model}
       this.$store.dispatch('addCategories',addData)
+      event.target.reset();
     },
 
 } ,
@@ -29,7 +30,7 @@ export default {
       name:'',
       description:'',
       model:'',
-    
+      
    
     rules: [
       value => {

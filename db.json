@@ -71,106 +71,6 @@
       "model": false
     },
     {
-      "id": "ram"
-    },
-    {
-      "name": "ram",
-      "id": 7
-    },
-    {
-      "name": "ram",
-      "id": 8
-    },
-    {
-      "table1": "ram",
-      "id": 9
-    },
-    {
-      "id": 10
-    },
-    {
-      "id": 11
-    },
-    {
-      "id": 12
-    },
-    {
-      "id": 13
-    },
-    {
-      "id": 14
-    },
-    {
-      "name": "ram",
-      "id": 15
-    },
-    {
-      "id": 16
-    },
-    {
-      "param": {
-        "name": "ram",
-        "description": "shyam",
-        "model": true
-      },
-      "id": 17
-    },
-    {
-      "name": "ram",
-      "id": 18
-    },
-    {
-      "name": "ram",
-      "id": 19
-    },
-    {
-      "name": "ram",
-      "id": 20
-    },
-    {
-      "id": 21
-    },
-    {
-      "param": {
-        "name": "name",
-        "description": "desc",
-        "model": true
-      },
-      "id": 22
-    },
-    {
-      "id": 23
-    },
-    {
-      "id": 24
-    },
-    {
-      "id": 25
-    },
-    {
-      "id": 26
-    },
-    {
-      "id": 27
-    },
-    {
-      "addData": {
-        "name": "ram",
-        "description": "shyam",
-        "model": true
-      },
-      "id": 28
-    },
-    {
-      "id": 29
-    },
-    {
-      "name": "ram",
-      "description": "shyam",
-      "model": true,
-      "id": 30
-    },
-    {
       "name": "ram",
       "description": "shyam",
       "model": true,
@@ -183,32 +83,48 @@
       "money": "56",
       "select": "Item 2",
       "id": 32
+    },
+    {
+      "name": "categy",
+      "description": "desc",
+      "model": true,
+      "id": 33
+    },
+    {
+      "name": "cate ",
+      "description": "decg",
+      "model": true,
+      "id": 34
+    },
+    {
+      "name": "ladlkq",
+      "description": "jkdsjkdf",
+      "model": "",
+      "id": 35
     }
   ],
   "table2": [
     {
-      "id": 1,
-      "name": "pikachu",
-      "description": "dfs",
-      "price": 12,
-      "category": "bad",
-      "model": true
+      "name": "Charmander",
+      "description": "Pokemon",
+      "model": true,
+      "price": "859",
+      "category": "Fire Type",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "squirtle",
-      "description": "vbhshd",
-      "price": 12,
-      "category": "bad",
-      "model": true
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "charlizard",
-      "description": "hshdfs",
-      "price": 12,
-      "category": "bad",
-      "model": true
+      "name": "raichu",
+      "description": "pokemon",
+      "model": true,
+      "price": "896",
+      "category": "Lightening Type",
+      "id": 3
+    },
+    {
+      "id": 4
     }
   ]
 }

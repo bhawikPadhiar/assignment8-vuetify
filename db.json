@@ -39,74 +39,60 @@
   ],
   "table1": [
     {
-      "id": 1,
-      "name": "shyam",
-      "description": "vbhjdfs",
-      "model": true
-    },
-    {
-      "id": 2,
-      "name": "ram",
-      "description": "vbhshdfs",
+      "id": 11,
+      "name": "dsa",
+      "description": "dfsdfd",
       "model": false
     },
     {
-      "id": 3,
-      "name": "shyam",
-      "description": "vbdfs",
-      "model": false
+      "name": "asd",
+      "description": "das",
+      "model": "",
+      "id": 12
     },
     {
-      "id": 4,
-      "name": "keyur",
-      "description": "vbdfs",
+      "name": "das",
+      "description": "ads",
+      "model": true,
+      "id": 13
+    },
+    {
+      "name": "das",
+      "description": "dsa",
+      "model": true,
+      "id": 14
+    },
+    {
+      "id": 15,
+      "name": "ads",
+      "description": "dasdas",
       "model": true
-    },
-    {
-      "id": 5,
-      "name": "rahul",
-      "description": "laravel",
-      "model": true
-    },
-    {
-      "id": 6,
-      "name": "soujanya",
-      "description": "vbhjfsfsddfs",
-      "model": false
     }
   ],
   "table2": [
     {
-      "id": 1,
-      "name": "sdads",
-      "description": "dsaasd",
+      "name": "pikachu",
+      "description": "dasjk",
       "model": true,
-      "price": "asdsa",
-      "category": "Water Type"
+      "price": "565",
+      "category": "Lightening Type",
+      "id": 1
+    },
+    {
+      "name": "raichu",
+      "description": "djsa",
+      "model": null,
+      "price": "55",
+      "category": "Lightening Type",
+      "id": 2
     },
     {
       "id": 3,
-      "name": "rte",
-      "description": "wtfdsdsds",
+      "name": "squirtle",
+      "description": "dsa",
       "model": true,
-      "price": "terrte",
-      "category": "Earth Type"
-    },
-    {
-      "name": "ram",
-      "description": "shyam",
-      "model": true,
-      "price": "56",
-      "category": "Water Type",
-      "id": 5
-    },
-    {
-      "name": "",
-      "description": "",
-      "model": false,
-      "price": "dsf",
-      "category": null,
-      "id": 6
+      "price": "5",
+      "category": "Water Type"
     }
   ]
 }

@@ -17,26 +17,30 @@
           vertical
         ></v-divider>
         <v-spacer></v-spacer>
-        <v-dialog
-          v-model="dialog"
-          max-width="500px"
-        >
-        
-          
+        <v-dialog v-model="dialogDelete" max-width="500px">
+            <v-card>
+              <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue-darken-1" variant="text" @click="closeDelete">Cancel</v-btn>
+                <v-btn color="blue-darken-1" variant="text" @click="deleteItemConfirm(deleteData)">OK</v-btn>
+                <v-spacer></v-spacer>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+
         <v-card>
-          <EditModalCate v-if="dialog" :editCateData="editData" @close-modal="close($event)"></EditModalCate>
+          <EditModalCate v-if="dialog" :editCateData="editData" @save-modal="save($event)" @close-modal="close($event)"></EditModalCate>
   
             </v-card>
-        </v-dialog>
+        
        
       </v-toolbar>
-
-
     </template>
 
     
     <template v-slot:[`item.model`]="{ item }">
-        <v-switch  :key="item.model" v-model="item.model" />
+        <v-switch  :key="item.model" @change="editModel(item)" v-model="item.model" />
   </template>
    
     <template v-slot:[`item.actions`]="{ item }">
@@ -92,12 +96,32 @@ import EditModalCate from './EditModalCate.vue';
     methods:{
       ...mapActions(['fetchTable1']),
       deleteCate(id){
-     this.$store.dispatch('deleteCate',id)},
+        this.deleteData=id,
+        
+      this.dialogDelete=true
+     },
+     closeDelete(){
+      this.dialogDelete=false
+     },
+     editModel(data){
+    
+      this.$store.dispatch('editModelCategories',data)
+     },
+
+     deleteItemConfirm(id){
+      console.log(id)
+      this.$store.dispatch('deleteCate',id)
+      this.dialogDelete=false
+     },
      editItem(data){
       this.editData=data,
+      
       this.dialog=true
      },
      close(){
+      this.dialog=false
+     },
+     save(){
       this.dialog=false
      }
     },
@@ -106,11 +130,14 @@ import EditModalCate from './EditModalCate.vue';
       this.$store.dispatch('fetchTable1')
     },
 
+
     data () {
       return {
         table1:[],
        dialog:false,
         editData:[],
+        dialogDelete:false,
+        deleteData:''
       }
     }
   }

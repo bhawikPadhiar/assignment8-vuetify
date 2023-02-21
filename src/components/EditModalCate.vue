@@ -3,11 +3,10 @@
       <v-dialog v-model="dialog" width="auto">
         <v-card>
           <v-card-text>
-            <h3>{{ postss }}</h3>
             <v-sheet width="300" class="mx-auto">
-                 <v-form  >
-                 <v-text-field v-model="postss.name" :rules="rules" label="Name"></v-text-field>
-                 <v-text-field v-model="postss.description" label="Description"></v-text-field>
+                 <v-form ref="form">
+                 <v-text-field v-model="postss.name" :rules="rules"   label="Name"></v-text-field>
+                 <v-text-field v-model="postss.description" :rules="rules" label="Description"></v-text-field>
                  <v-switch v-model="postss.model" hide-details inset ></v-switch>
               <!-- <v-btn type="submit" value="Submit" block class="mt-2">Submit</v-btn> -->
               </v-form>
@@ -18,8 +17,7 @@
               <v-btn
                 color="blue-darken-1"
                 variant="text"
-                @click="close"
-              >
+                @click="close">
                 Cancel
               </v-btn>
               <v-btn
@@ -31,34 +29,34 @@
                 Save
               </v-btn>
              </v-card-actions>
-          
         </v-card>
       </v-dialog>
     </v-main>
   </template>
   
   <script>
-  
-  //import { mapActions } from 'vuex'
-  
-  
   export default {
+
     props: ["editCateData"],
+    
   
     data() {
       return {
+        resetData:[
+
+        ],
         //editData:[],
         postss: this.editCateData,
-        dialog: true,
+        dialog:true,
         items: [
           "Fire Type",
           "Water Type",
           "Earth Type",
           "Lightening Type",
         ],
-         name:this.name,
-         description:this.description,
-         model:this.price,
+        //  name:this.name,
+        //  description:this.description,
+        //  model:this.price,
         //  table2:[]
         rules: [
           value => {
@@ -70,11 +68,9 @@
       };
     },
     getters: {
-  
       // this.$store.commit('allTable2')
     },
     methods: {
-    
       // open(data){
       //   console.log(data)
       // },
@@ -83,21 +79,22 @@
       },
      //...mapActions(['editItems']),
      onSubmit() {
-      
       //  this.$store.dispatch('editItems')
+      if(this.$refs.form.validate()){
+
+      
         let edit ={
           id: this.postss.id,
           name:this.postss.name,
           description:this.postss.description,
           model:this.postss.model
-         
         };
-        this.$store.dispatch('editCateg',edit)
+        this.$store.dispatch('editCateg',edit),
         
-       // this.editItems(edit);
-       
-    
+        this.$emit("save-modal")
+        
        }
+      }
     },
   
   }

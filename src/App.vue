@@ -1,6 +1,9 @@
 <template>
+ 
+ 
   <v-app id="inspire">
-    <v-app-bar  :absolute="true" :elevation="2" >
+   
+    <v-app-bar app :elevation="1" >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Session 8</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -8,7 +11,7 @@
       <v-btn elevation fab small><v-icon>mdi-magnify</v-icon></v-btn>
       <v-btn elevation fab small><v-icon>mdi-dots-vertical</v-icon></v-btn>
     </v-app-bar>
-    <v-navigation-drawer app v-model="drawer" temporary>  
+    <v-navigation-drawer  app v-model="drawer" temporary>  
       <template>
       <v-list>
            <!-- list group 1 -->
@@ -16,7 +19,7 @@
           active-color="primary">
           <template v-slot:activator>
             <v-list-item-content>
-              <v-list-item-title v-text="item.title"></v-list-item-title>
+              <v-list-item-title  v-text="item.title"></v-list-item-title>
               <!-- <v-icon :icon="item.icon"></v-icon> -->
             </v-list-item-content>
           </template>
@@ -24,7 +27,7 @@
                 <template >
               <v-list-item-content>
                 <v-icon :prepend-icon="child.icon"></v-icon>
-               <v-list-item-title :prepend-icon="child.icon" v-text="child.title"></v-list-item-title>
+               <v-list-item-title  :prepend-icon="child.icon" v-text="child.title"></v-list-item-title>
               </v-list-item-content>
             </template>
          
@@ -59,7 +62,7 @@
    <!-- <AllItems></AllItems> -->
     <!-- <AddNew></AddNew >
     <AddNewItems></AddNewItems> -->
-    
+
     
     <v-main>
       
@@ -114,7 +117,10 @@ export default {
 
     methods:{
       ...mapActions(['fetchItems']),...mapActions(['fetchItems2']),...mapActions(['fetchItems3']),...mapActions(['fetchItems4']),
-      
+      open(data){
+      this.drawer=data
+      console.warn(data)
+      }
     
     },
     created(){
@@ -124,7 +130,7 @@ export default {
       this.fetchItems4()
     },
   data: () => ({
-    drawer: null,
+    drawer: false,
     // display1:false,
     // display2:false,
     // display3:false,

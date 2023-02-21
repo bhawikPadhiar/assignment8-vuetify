@@ -1,42 +1,82 @@
 <template>
   <v-sheet width="300" class="mx-auto">
-    <v-form @submit="onSubmit">
-      <v-text-field v-model="name" :rules="rules" label="Name"></v-text-field>
-      <v-text-field v-model="description" label="Description"></v-text-field>
-      <v-switch v-model="model" hide-details inset ></v-switch>
+    <v-form ref="form" @submit.prevent="onSubmit()" lazy-validation>
+
+      <v-text-field v-model="name" :error-messages="nameErrors" required @input="$v.name.$touch()" :rules="rules"
+        label="Name"></v-text-field>
+      <v-text-field v-model="description" :error-messages="descriptionErrors" required @input="$v.description.$touch()"
+        @blur="$v.description.$touch()" :rules="rules" label="Description"></v-text-field>
+      <v-switch v-model="model" hide-details inset required></v-switch>
       <v-btn type="submit" value="Submit" block class="mt-2">Submit</v-btn>
     </v-form>
   </v-sheet>
 </template>
 
 <script>
+// import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
+
 //import { mapActions } from 'vuex';
 export default {
-props:['addItems'],
-  methods:{
-    
-   // ...mapActions(['addCategories']),
-   
+  // mixins: [validationMixin],
 
-    onSubmit(event){
-    //  e.preventDefault();
-      let addData={name:this.name,description:this.description,model:this.model}
-      this.$store.dispatch('addCategories',addData)
-      event.target.reset();
+  validations: {
+    name: { required },
+    description: { required },
+    // select: { required },
+    // checkbox: {
+    //   checked (val) {
+    //     return val
+    //   },
+    // },
+  },
+  computed: {
+    nameErrors() {
+      const errors = []
+      if (!this.$v.name.$dirty) return errors
+      // !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
+      !this.$v.name.required && errors.push('Name is required.')
+      return errors
+    },
+    descriptionErrors() {
+      const errors = []
+      if (!this.$v.description.$dirty) return errors
+      // !this.$v.desc.maxLength && errors.push('description must be at most 10 characters long')
+      !this.$v.description.required && errors.push('description is required.')
+      return errors
+    },
+  },
+  props: ['addItems'],
+  methods: {
+
+    // ...mapActions(['addCategories']),
+
+
+    onSubmit() {
+      this.$v.$touch()
+      // event.target.reset()
+      //e.preventDefault();
+      let addData = { name: this.name, description: this.description, model: this.model }
+      this.$store.dispatch('addCategories', addData),
+    //  event.target.reset();
+    this.$refs.form.reset()
     },
 
-} ,
+  },
+
   data: () => ({
-      name:'',
-      description:'',
-      model:'',
-      
-   
+    name: '',
+    description: '',
+    model: '',
+    data: [],
+    
+    
+
     rules: [
       value => {
         if (value) return true
 
-        return 'You must enter a first name.'
+        return 'Item is required.'
       },
     ],
   }),

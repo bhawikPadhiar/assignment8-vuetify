@@ -73,13 +73,19 @@ const actions = {
     commit('removeCate',id);
    
 },
-// Edit
+// Edit items
     async editItems({commit},edit){
-       const response = await axios.put(`http://localhost:3000/table2/`+edit.id);
+       const response = await axios.put(`http://localhost:3000/table2/${edit.id}`,edit);
          commit('editItem',edit);
-        alert(response.data);
         console.log(response.data)
-    }
+    },
+// Edit Categories
+async editCateg({commit},edit){
+    const response = await axios.put(`http://localhost:3000/table1/${edit.id}`,edit);
+      commit('editCateg',edit);
+     
+     console.log(response.data)
+ },
    
     
 };
@@ -98,10 +104,14 @@ const mutations ={
     editItem: (state,edit)=> {const index = state.table2.findIndex(table2 => table2.id === edit.id);
     if(index !== -1){
         state.table2.splice(index,1,edit);
+        console.warn(edit)
     }
  },
-
-
+ editCateg: (state,edit)=> {const index = state.table1.findIndex(table1 => table1.id === edit.id);
+    if(index !== -1){
+        state.table1.splice(index,1,edit);
+    }
+ }
 };
 
 export default {

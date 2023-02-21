@@ -16,21 +16,25 @@
   "items3": [
     {
       "title": "All category",
-      "route": "/AllCategories"
+      "route": "/AllCategories",
+      "icon": "mdi-folder"
     },
     {
       "title": "Add New Category",
-      "route": "/AddNewCategory"
+      "route": "/AddNewCategory",
+      "icon": "mdi-pen"
     }
   ],
   "items4": [
     {
       "title": "All Items",
-      "route": "/AllItems"
+      "route": "/AllItems",
+      "icon": "mdi-widgets"
     },
     {
       "title": "Add New Items",
-      "route": "/AddNewItems"
+      "route": "/AddNewItems",
+      "icon": "mdi-pen"
     }
   ],
   "table1": [
@@ -48,7 +52,7 @@
     },
     {
       "id": 3,
-      "name": "ghanshyam",
+      "name": "shyam",
       "description": "vbdfs",
       "model": false
     },
@@ -61,70 +65,48 @@
     {
       "id": 5,
       "name": "rahul",
-      "description": "vbhjhdfs",
+      "description": "laravel",
       "model": true
     },
     {
       "id": 6,
       "name": "soujanya",
-      "description": "vbhjfs",
+      "description": "vbhjfsfsddfs",
       "model": false
-    },
-    {
-      "name": "ram",
-      "description": "shyam",
-      "model": true,
-      "id": 31
-    },
-    {
-      "name": "ram",
-      "description": "shyam",
-      "model": true,
-      "money": "56",
-      "select": "Item 2",
-      "id": 32
-    },
-    {
-      "name": "categy",
-      "description": "desc",
-      "model": true,
-      "id": 33
-    },
-    {
-      "name": "cate ",
-      "description": "decg",
-      "model": true,
-      "id": 34
-    },
-    {
-      "name": "ladlkq",
-      "description": "jkdsjkdf",
-      "model": "",
-      "id": 35
     }
   ],
   "table2": [
     {
-      "name": "Charmander",
-      "description": "Pokemon",
+      "id": 1,
+      "name": "sdads",
+      "description": "dsaasd",
       "model": true,
-      "price": "859",
-      "category": "Fire Type",
-      "id": 1
+      "price": "asdsa",
+      "category": "Water Type"
     },
     {
-      "id": 2
-    },
-    {
-      "name": "raichu",
-      "description": "pokemon",
+      "id": 3,
+      "name": "rte",
+      "description": "wtfdsdsds",
       "model": true,
-      "price": "896",
-      "category": "Lightening Type",
-      "id": 3
+      "price": "terrte",
+      "category": "Earth Type"
     },
     {
-      "id": 4
+      "name": "ram",
+      "description": "shyam",
+      "model": true,
+      "price": "56",
+      "category": "Water Type",
+      "id": 5
+    },
+    {
+      "name": "",
+      "description": "",
+      "model": false,
+      "price": "dsf",
+      "category": null,
+      "id": 6
     }
   ]
 }

@@ -1,20 +1,15 @@
 <template>
-  
-  <v-app>
-    <v-app-bar elevation="" >
+  <v-app id="inspire">
+    <v-app-bar  :absolute="true" :elevation="2" >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Session 8</v-toolbar-title>
-      
       <v-spacer></v-spacer>
       <v-btn elevation fab small><v-icon>mdi-heart</v-icon></v-btn>
       <v-btn elevation fab small><v-icon>mdi-magnify</v-icon></v-btn>
       <v-btn elevation fab small><v-icon>mdi-dots-vertical</v-icon></v-btn>
     </v-app-bar>
-   <!-- <AllCategories></AllCategories> -->
-   <!-- <AllItems></AllItems> -->
-    <!-- <AddNew></AddNew >
-    <AddNewItems></AddNewItems> -->
     <v-navigation-drawer app v-model="drawer" temporary>  
+      <template>
       <v-list>
            <!-- list group 1 -->
         <v-list-group v-for="item in allItems" :key="item.title" v-model="item.active" :prepend-icon="item.icon"
@@ -25,12 +20,15 @@
               <!-- <v-icon :icon="item.icon"></v-icon> -->
             </v-list-item-content>
           </template>
-          <v-list-item router :to='child.route' :key="child.title" v-for="child in allItems3"  :prepend-icon="child.icon" active-color="primary">
-            <v-list-item-content>
-
-             <v-list-item-title  v-text="child.title"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+            <v-list-item router :to='child.route' :key="child.title" v-for="child in allItems3" :prepend-icon="child.icon"  active-color="dark">
+                <template >
+              <v-list-item-content>
+                <v-icon :prepend-icon="child.icon"></v-icon>
+               <v-list-item-title :prepend-icon="child.icon" v-text="child.title"></v-list-item-title>
+              </v-list-item-content>
+            </template>
+         
+            </v-list-item>
         </v-list-group>
       </v-list> 
         <!-- list group 2 -->
@@ -50,9 +48,21 @@
           </v-list-item>
         </v-list-group>
       </v-list>
-      
+    </template>
     </v-navigation-drawer >
+    
+
+  
+    
+ 
+   <!-- <AllCategories></AllCategories> -->
+   <!-- <AllItems></AllItems> -->
+    <!-- <AddNew></AddNew >
+    <AddNewItems></AddNewItems> -->
+    
+    
     <v-main>
+      
       <v-container class="d-flex justify-right align-right text-h5">
        
       <RouterView></RouterView>
@@ -80,6 +90,8 @@
      </v-container> -->
     </v-main>
   </v-app>
+
+
 </template>
 
 <script>
@@ -94,6 +106,7 @@ import { mapGetters,mapActions } from 'vuex';
 
 //  import AllItems from './components/AllItems.vue';
 export default {
+ 
   name: 'App',
    
     //RouterView,
@@ -111,7 +124,7 @@ export default {
       this.fetchItems4()
     },
   data: () => ({
-    drawer: false,
+    drawer: null,
     // display1:false,
     // display2:false,
     // display3:false,

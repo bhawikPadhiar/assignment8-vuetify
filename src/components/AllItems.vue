@@ -1,56 +1,61 @@
 <template>
-  <v-main><EditModalItems v-if="dialog" :editItemsData="editData" :items="items" @close-modal="close($event)" @openModals="open($event)"></EditModalItems>
-  <v-table density="comfortable" theme="dark">
-    <thead>
-      <tr>
+  <v-main>
+    <v-main>
+  <v-data-table
+    :headers="headers"
+    :items="allTable2"
+    :sort-by="[{ key: 'calories', order: 'asc' }]"
+    class="elevation-1"
+  >
+    <template v-slot:top>
+      <v-toolbar
+        flat >
+        <v-toolbar-title>All Items</v-toolbar-title>
+        <v-divider
+          class="mx-4"
+          inset
+          vertical
+        ></v-divider>
         <v-spacer></v-spacer>
-        <th>
-          ID
-        </th>
-        <v-spacer></v-spacer>
-        <th>
-          Name
-        </th>
-        <v-spacer></v-spacer>
-        <th>
-          Description
-        </th>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <th>
-          Category
-        </th>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <th>
-          Price
-        </th>
-        <v-spacer></v-spacer>
-        <th>
-          Status
-        </th>
-        <th>
-          Actions
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in allTable2" :key="item.name"><v-spacer></v-spacer>
-        <td>{{ item.id }}</td>
-        <v-spacer></v-spacer>
-        <td>{{ item.name }}</td>
-        <v-spacer></v-spacer>
-        <td>{{ item.description }}</td>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <td>{{ item.category }}</td>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <td>{{ item.price }}</td>
-        <v-spacer></v-spacer>
-        <td><v-switch v-model="item.model" label="Switch"></v-switch></td>
-        <v-spacer></v-spacer>
-        <td><v-btn @click="deleteItems(item.id)">
+        <v-dialog
+          v-model="dialog"
+          max-width="500px"
+        >
+        <v-card>
+          <EditModalItems v-if="dialog" :editItemsData="editData" :items="items" @close-modal="close($event)"></EditModalItems>
+  
+            </v-card>
+        </v-dialog>
+       
+      </v-toolbar>
+    </template>
+    <template v-slot:[`item.model`]="{ item }">
+        <v-switch  :key="item.model" v-model="item.model" />
+  </template>
+   
+    <template v-slot:[`item.actions`]="{ item }">
+      <v-icon
+        size="small"
+        class="me-2"
+        @click="editItem(item)"
+      >
+        mdi-pencil
+      </v-icon>
+      <v-icon
+        size="small"
+      
+        @click="deleteItems(item.id)"
+      >
+        mdi-delete
+      </v-icon>
+    </template>
+   
+  </v-data-table>
+</v-main>
+  
+
+
+        <!-- <td><v-btn @click="deleteItems(item.id)">
             Delete
           </v-btn></td>
         <v-spacer></v-spacer>
@@ -60,8 +65,8 @@
         <v-spacer></v-spacer>
       </tr>
     </tbody>
-  </v-table>
-  <p>{{ editData }}</p>
+  </v-table> -->
+  
 </v-main>
 </template>
 
@@ -76,7 +81,18 @@ export default {
     EditModalItems
 },
   computed: {
-    ...mapGetters(['allTable2'])
+    ...mapGetters(['allTable2']),
+    headers(){
+        return [
+          { text: 'ID' , value:'id'},
+          { text: 'Name' , value:'name'},
+          { text: 'Description', value :'description'},
+          { text: 'Price', value:'price' },
+          { text: 'Category', value:'category' },
+          { text: 'Status', value:'model' },
+          { text: 'Actions', value:'actions'}
+        ]
+      },
   },
   methods: {
     ...mapActions(['fetchTable2']),
@@ -84,7 +100,7 @@ export default {
      
       this.$store.dispatch('deleteItems', id)
     },
-    openModal(data){
+    editItem(data){
       //this.$emit('openMoadals',data),
       this.editData=data,
       this.dialog=true

@@ -5,6 +5,12 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import VueCurrencyFilter from 'vue-currency-filter'
 import Vuelidate from 'vuelidate';
+import { ValidationProvider } from 'vee-validate'
+import { ValidationObserver } from 'vee-validate'
+
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
+
 
 Vue.use(Vuelidate);
 

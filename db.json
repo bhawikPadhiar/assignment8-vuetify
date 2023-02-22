@@ -15,11 +15,13 @@
   ],
   "items3": [
     {
+      "id": 1,
       "title": "All category",
       "route": "/AllCategories",
       "icon": "mdi-folder"
     },
     {
+      "id": 2,
       "title": "Add New Category",
       "route": "/AddNewCategory",
       "icon": "mdi-pen"
@@ -51,22 +53,46 @@
       "id": 12
     },
     {
+      "id": 13,
       "name": "das",
       "description": "ads",
-      "model": true,
-      "id": 13
-    },
-    {
-      "name": "das",
-      "description": "dsa",
-      "model": true,
-      "id": 14
+      "model": true
     },
     {
       "id": 15,
       "name": "ads",
       "description": "dasdas",
       "model": true
+    },
+    {
+      "name": "",
+      "description": "",
+      "model": false,
+      "id": 16
+    },
+    {
+      "name": null,
+      "description": null,
+      "model": null,
+      "id": 17
+    },
+    {
+      "name": null,
+      "description": null,
+      "model": null,
+      "id": 18
+    },
+    {
+      "name": null,
+      "description": null,
+      "model": null,
+      "id": 19
+    },
+    {
+      "name": null,
+      "description": null,
+      "model": null,
+      "id": 20
     }
   ],
   "table2": [

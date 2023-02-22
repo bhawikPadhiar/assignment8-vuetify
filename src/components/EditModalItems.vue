@@ -111,6 +111,11 @@ export default {
    // const edit = {postss}
    
   },
+  watch:{
 
+dialog(val){
+  val ||this.close() ||this.$emit("close-modal");
+}
+}
 }
 </script>

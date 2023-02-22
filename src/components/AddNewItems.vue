@@ -4,7 +4,7 @@
             <v-form ref="form" @submit.prevent="onSubmit">
                  <v-text-field v-model="name" :error-messages="nameErrors"  @input="$v.name.$touch()"
                     @blur="$v.name.$touch()" label="name"></v-text-field>
-                   <v-text-field v-model="price" :error-messages="priceErrors"  @input="$v.price.$touch()"
+                    <v-text-field v-model="price" :error-messages="priceErrors"  @input="$v.price.$touch()"
                     @blur="$v.price.$touch()" label="price"></v-text-field>
                   <v-text-field v-model="description" :error-messages="descriptionErrors" @input="$v.description.$touch()"
                     @blur="$v.description.$touch()" label="Description"></v-text-field>

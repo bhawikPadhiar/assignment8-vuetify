@@ -81,23 +81,23 @@ const actions = {
     },
 // Edit Categories
 async editCateg({commit},edit){
-    const response = await axios.put(`http://localhost:3000/table1/${edit.id}`,edit);
+     await axios.put(`http://localhost:3000/table1/${edit.id}`,edit);
       commit('editCateg',edit);
      
-     console.log(response.data)
+    
  },
  //Edit Items Status
  async editModelItems({commit},edit){
-    const response = await axios.put(`http://localhost:3000/table2/${edit.id}`,edit);
+   await axios.put(`http://localhost:3000/table2/${edit.id}`,edit);
       commit('editModelItems',edit);
-     console.log(response.data)
+     
  },
  // Edit Categories Status
  async editModelCategories({commit},edit){
-    const response = await axios.put(`http://localhost:3000/table1/${edit.id}`,edit);
+   await axios.put(`http://localhost:3000/table1/${edit.id}`,edit);
       commit('editModelCategories',edit);
      
-     console.log(response.data)
+    
  }, 
     
 };

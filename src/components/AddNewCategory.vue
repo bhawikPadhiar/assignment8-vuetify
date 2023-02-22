@@ -1,6 +1,6 @@
 <template>
   <v-sheet width="300" class="mx-auto">
-    <v-form ref="form" @submit.prevent="onSubmit()" lazy-validation>
+    <v-form ref="form" @submit.prevent="onSubmit()" >
 
       <v-text-field v-model="name" :error-messages="nameErrors" required @input="$v.name.$touch()" :rules="rules"
         label="Name"></v-text-field>
@@ -24,11 +24,7 @@ export default {
     name: { required },
     description: { required },
     // select: { required },
-    // checkbox: {
-    //   checked (val) {
-    //     return val
-    //   },
-    // },
+  
   },
   computed: {
     nameErrors() {
@@ -41,7 +37,7 @@ export default {
     descriptionErrors() {
       const errors = []
       if (!this.$v.description.$dirty) return errors
-      // !this.$v.desc.maxLength && errors.push('description must be at most 10 characters long')
+     
       !this.$v.description.required && errors.push('description is required.')
       return errors
     },

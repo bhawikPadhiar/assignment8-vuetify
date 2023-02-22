@@ -8,10 +8,7 @@
           <v-toolbar-title>All Items</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
-          <!-- <v-dialog
-          v-model="dialog"
-          max-width="500px"
-        > -->
+       
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
@@ -47,17 +44,7 @@
       </template>
     </v-data-table>
 
-    <!-- <td><v-btn @click="deleteItems(item.id)">
-            Delete
-          </v-btn></td>
-        <v-spacer></v-spacer>
-        <td><v-btn  @click="openModal(item)">
-            Edit
-          </v-btn></td>
-        <v-spacer></v-spacer>
-      </tr>
-    </tbody>
-  </v-table> -->
+  
 
   </v-main>
 </template>
@@ -107,13 +94,11 @@ export default {
         this.dialog = true
     },
     editModel(data){
-    
       // let edit ={
        
       //   id:data.id,
       //   model:data.model
       // }
-
       console.log()
       this.$store.dispatch('editModelItems', data)
     },
